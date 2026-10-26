@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    .logo{
+        display: flex;
+        gap:10px;
+        align-items: center;
+        
+    }
+    i{
+        color: blue;
+        font-size: 25px;
+    }
+    span{
+        color: blue;
+    }
+}
+body {
+    padding-left:  10px;
+    padding-right: 10px;
+}
+hr{
+    margin: 0;
+}
+aside{
+   width: 250px;
+   height: 520px;
+   margin-top: -15px;
+   background-color: #E8FAFA;
+}
