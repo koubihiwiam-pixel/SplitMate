@@ -26,8 +26,24 @@ hr{
     margin: 0;
 }
 aside{
-   width: 250px;
-   height: 520px;
-   margin-top: -15px;
-   background-color: #E8FAFA;
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   width: 230px;
+   height: 500px;
+   background-color: #F2FAFC;
+   padding: 20px;
+   i{
+    color: blue;
+   }
+   p{
+    display: flex;
+    gap: 10px;
+   }
+   .selectionner{
+    background-color:#BBD1FB
+;
+    color: blue;
+    padding: 8px;
+    margin: 0px;
+    border-radius: 10px;
+   }
 }
