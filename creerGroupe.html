@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -27,31 +29,42 @@
             <a href=""><i class="fa-solid fa-magnifying-glass"></i>Recherche & filtres</a>
 
         </aside>
-     <div>
+        <main>
+            <a href="groupe.html" style="text-decoration: none; color: black;"><i class="fa-solid fa-arrow-left-long"
+                    style="font-size: 12px;"></i> Retour</a>
+            <section class="formulaire" id="formulaire">
                 <h2>Information du groupe</h2>
                 <h3>Nom du groupe</h3>
                 <div>
                     <input id="nomGroupe" placeholder="Ex: Voyage Marrakech">
                 </div>
-                
-                <label>Description</label><br>
-                <textarea id="description" name="description" rows="4"
-                    cols="50">Ex: Vacances entre amis.. </textarea><br>
-                <div>
-                    <label>Devise</label>
-                    <select id="devise">
-                        <option value="MAD">MAD</option>
-                        <option value="EURO">EURO</option>
-                    </select>
-                    <label for="">Date de début</label>
-                    <input type="date">
-                </div>
-                <div>
-                    <button onclick="" >Annuler</button>
-                    <button onclick="">Créer le group</button>
-                </div>
 
-            </div>
-            </div>
+                <h3>Description</h3>
+                <div><textarea id="description" rows="5" cols="60">Ex: Vacances entre amis.. </textarea></div>
+
+                <div class="info">
+                    <div>
+                        <h3>Devise</h3>
+                        <select id="devise">
+                            <option value="MAD">MAD</option>
+                            <option value="EURO">EURO</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <h3>Date de début</h3>
+                        <input type="date" id="date">
+                    </div>
+
+                </div>
+                <div style="padding-top: 20px;display: flex; gap:2%;">
+                    <button id="annuler" onclick="">Annuler</button>
+                    <button id="enregistrer" onclick="">Créer le group</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
 </body>
+
 </html>
