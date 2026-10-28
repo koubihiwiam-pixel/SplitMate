@@ -1,9 +1,18 @@
-*{font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
     header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left:0;
+    
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
     
     .logo{
         display: flex;
@@ -28,10 +37,14 @@ hr{
 }
 aside{
    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   width: 300px;
-   height: 500px;
+   width: 250px;
+   height: 100vh;
    background-color: #F2FAFC;
    padding: 20px;
+   position: fixed;
+   top:52px;
+   left:0;
+   
    i{
     color: blue;
     padding-top: 12px;
@@ -56,8 +69,12 @@ aside{
     display: flex;
 }
 main{
-    padding-left: 40px;
+    margin-top: 40px;
+    padding-left: 300px;
     width: 100%;
+    padding-top: 20px;
+    
+    
     
 }
 .button {
@@ -69,6 +86,7 @@ main{
 }
 .hero{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     
     h1{
@@ -77,14 +95,16 @@ main{
     }
 
     .recherche{
-        margin-left:350px ;
-        input{
-            padding: 7px 15px;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        gap:4px;
+        height: 5px;
+        
     } 
+    
 }
 
-.groupes{
+#groupes{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -130,7 +150,14 @@ main{
 }
 
 #formulaire{
+    border: 1px solid gray;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 4%;
     
+    margin-top: 3%;
+    border-radius: 40px;
+
     #nomGroupe , #description{
         width: 50%;
     }
@@ -141,7 +168,8 @@ main{
     
     .info{
         display: flex;
-        gap:17%
+        gap:17%;
+        flex-wrap: wrap;
     }
     #annuler{
         width: 20%;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>greer groupe</title>
+    <title>creer groupe</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,12 +13,11 @@
 <body>
     <header>
         <div class="logo">
-            <i class="fa-solid fa-user-group"></i>
+            <i class="fa-solid fa-user-group" style="padding-left: 20px;"></i>
             <p>Split<span>Mate</span></p>
         </div>
-        <div><i class="fa-solid fa-circle-user"></i></div>
+        <div><i class="fa-solid fa-circle-user"style="padding-right: 20px;"></i></div>
     </header>
-    <hr>
     <div class="Corps">
         <aside>
             <a href=""><i class="fa-solid fa-house"></i>Tableau de bord</a>
@@ -31,7 +30,7 @@
         </aside>
         <main>
             <a href="groupe.html" style="text-decoration: none; color: black;"><i class="fa-solid fa-arrow-left-long"
-                    style="font-size: 12px;"></i> Retour</a>
+                    style="font-size: 12px;" id="retour"></i> Retour</a>
             <section class="formulaire" id="formulaire">
                 <h2>Information du groupe</h2>
                 <h3>Nom du groupe</h3>
@@ -59,12 +58,17 @@
                 </div>
                 <div style="padding-top: 20px;display: flex; gap:2%;">
                     <button id="annuler" onclick="">Annuler</button>
-                    <button id="enregistrer" onclick="">Créer le group</button>
+                    <button id="enregistrer" onclick="creerGroup()" >Créer le groupe</button>
                 </div>
             </section>
 
         </main>
+        <div class="grp">
+
+        </div>
     </div>
+
+    <script src="js/groupes.js"></script>
 </body>
 
 </html>
