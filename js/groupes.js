@@ -11,31 +11,37 @@ function creerGroup() {
     const date = document.getElementById('date');
 
 
+let objetGroup ={};
+if(nomGroupe.value && devise.value && date.value ){
+        objetGroup.id = groupConter;
+        objetGroup.nom = nomGroupe.value;
+        objetGroup.description = description.value;
+        objetGroup.devise = devise.value;
+        objetGroup.date = date.value;
+        objetGroup.cloture = false;
+        groupConter++;
 
-
-    let objetGroup = {
-        id: groupConter,
-        nom: nomGroupe.value,
-        description: description.value,
-        devise: devise.value,
-        date: date.value,
-        cloture: false,
-    };
-    groupConter++;
-    carteGroup.push(objetGroup);
+        carteGroup.push(objetGroup);
+}else {
+        alert(`Veuillez remplir les champs`);
+    }
+    
     console.log(carteGroup);
+    nomGroupe.value="";
+    description.value="";
+    date.value="";
     localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
     window.location.href = 'groupe.html';
     
 
 }
-
+let groupes = document.getElementById('groupes');
+let valeursRecue = localStorage.getItem('infoPartagee');
+let tableInfo = JSON.parse(valeursRecue);
 function afficherGroupe() {
-    let groupes = document.getElementById('groupes');
-    const valeursRecue = localStorage.getItem('infoPartagee');
+    
+    
     if(valeursRecue){
-        const tableInfo = JSON.parse(valeursRecue);
-        console.log(tableInfo);
         groupes.innerHTML = "";
         tableInfo.forEach(function (item) {
             groupes.innerHTML += `<div class="carte">
@@ -44,23 +50,45 @@ function afficherGroupe() {
                             style="background-color: #BBD1FB; padding: 10px; border-radius: 50%;color: blue;"></i>
                         <div>
                             <button class="modifier"><i class="fa-solid fa-pen"></i></button>
-                            <button class="supprimer"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                            <button data-id="${item.id}" class="supprimer" ><i class="fa-sharp fa-solid fa-trash"></i></button>
                         </div>
                     </div>
 
 
                     <h2>${item.nom}</h2>
-                    <h3><i class="fa-solid fa-user"></i> 3 Membres</h3>
+                    <h3>${item.description}</h3>
                     <h4 style="color: rgb(72, 70, 70);">540 € dépensés</h4>
-                    <span>Ouvert</span>
+                    <span>ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
+                    
 
-                </div>`});
+                </div>`
+                console.log(item.id);
+            });
+                
     }else{
         groupes.textContent = "aucun groupe";
     }
-
-
-
+    supprimerCarte();
+    
+    
 }
-document.addEventListener("DOMContentLoaded", afficherGroupe);
+
+
+function supprimerCarte(){
+    let deleteCarte = groupes.querySelectorAll('.supprimer');
+    
+
+    deleteCarte.forEach(function(btn){
+        btn.addEventListener("click",function(e){
+            let idCarte = this.dataset.id;
+            tableInfo = tableInfo.filter(function(carte){
+                return carte.id != idCarte;
+            });
+        localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+        afficherGroupe();
+        });
+
+    });
+}
+afficherGroupe();
