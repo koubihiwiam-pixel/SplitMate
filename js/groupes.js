@@ -3,7 +3,7 @@ let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 let groupConter = carteGroup.length + 1;
 
 function creerGroup() {
-    
+
 
     const nomGroupe = document.getElementById('nomGroupe');
     const description = document.getElementById('description');
@@ -11,8 +11,8 @@ function creerGroup() {
     const date = document.getElementById('date');
 
 
-let objetGroup ={};
-if(nomGroupe.value && devise.value && date.value ){
+    let objetGroup = {};
+    if (nomGroupe.value && devise.value && date.value) {
         objetGroup.id = groupConter;
         objetGroup.nom = nomGroupe.value;
         objetGroup.description = description.value;
@@ -22,26 +22,26 @@ if(nomGroupe.value && devise.value && date.value ){
         groupConter++;
 
         carteGroup.push(objetGroup);
-}else {
+    } else {
         alert(`Veuillez remplir les champs`);
     }
-    
+
     console.log(carteGroup);
-    nomGroupe.value="";
-    description.value="";
-    date.value="";
+    nomGroupe.value = "";
+    description.value = "";
+    date.value = "";
     localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
     window.location.href = 'groupe.html';
-    
+
 
 }
 let groupes = document.getElementById('groupes');
 let valeursRecue = localStorage.getItem('infoPartagee');
 let tableInfo = JSON.parse(valeursRecue);
 function afficherGroupe() {
-    
-    
-    if(valeursRecue){
+
+
+    if (valeursRecue) {
         groupes.innerHTML = "";
         tableInfo.forEach(function (item) {
             groupes.innerHTML += `<div class="carte">
@@ -63,30 +63,34 @@ function afficherGroupe() {
                     
 
                 </div>`
-                console.log(item.id);
-            });
-                
-    }else{
+            console.log(item.id);
+        });
+
+    } else {
         groupes.textContent = "aucun groupe";
     }
     supprimerCarte();
-    
-    
+
+
 }
 
 
-function supprimerCarte(){
+function supprimerCarte() {
     let deleteCarte = groupes.querySelectorAll('.supprimer');
-    
 
-    deleteCarte.forEach(function(btn){
-        btn.addEventListener("click",function(e){
-            let idCarte = this.dataset.id;
-            tableInfo = tableInfo.filter(function(carte){
-                return carte.id != idCarte;
-            });
-        localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
-        afficherGroupe();
+
+    deleteCarte.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            if (confirm("vous voulez vraiment supprimer ?")) {
+                let idCarte = this.dataset.id;
+
+                tableInfo = tableInfo.filter(function (carte) {
+                    return carte.id != idCarte;
+                });
+                localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+                afficherGroupe();
+            };
+
         });
 
     });
