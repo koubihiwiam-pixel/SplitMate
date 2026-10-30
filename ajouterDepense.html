@@ -32,60 +32,69 @@
     <main>
         <a href="depense.html" style="text-decoration: none; color: black;"><i class="fa-solid fa-arrow-left-long"
                 style="font-size: 12px;" id="retour"></i> Retour</a>
-        <section id="formule">
+        <form id="formule">
             <h2>Information générale</h2>
             <h3>Titre</h3>
             <div>
-                <input id="nomGroupe" placeholder="Ex : Courses">
+                <input id="titre" placeholder="Ex : Courses">
             </div>
             <h3>Montant</h3>
             <div>
-                <input id="nomGroupe" placeholder="Ex : 120">
+                <input id="montant" placeholder="Ex : 120">
             </div>
             <div class="info">
                 <div>
+                    <h3>Groupe</h3>
+                    <select id="Groupe">
+                        <option>groupe1</option>
+                        <option>groupe2</option>
+                        <option>groupe3</option>
+                    </select>
+                </div>
+                <div>
                     <h3>Catégorie</h3>
-                    <select>
+                    <select id="categorie">
                         <option>Alimentation</option>
                         <option>courses</option>
                     </select>
                 </div>
                 <div>
                     <h3>Date</h3>
-                    <input type="date">
+                    <input id="date2" type="date">
                 </div>
             </div>
             <div class="info">
                 <div>
-                <h3>Payeur</h3>
-                <select>
-                    <option>Ahmed</option>
-                    <option>Leila</option>
-                    <option>Meriem</option>
-                </select>
+                    <h3>Payeur</h3>
+                    <select id="payeur">
+                        <option>Ahmed</option>
+                        <option>Leila</option>
+                        <option>Meriem</option>
+                    </select>
                 </div>
                 <div>
-                <h3>Membres concernés</h3>
-                <select>
-                    <option>Ahmed-Merouan-Mohammed-Mehdi</option>
-                    <option>Leila-Safia-Wiam-Aya</option>
-                    <option>Meriem-Aymen-Karim</option>
-                </select>
+                    <h3>Membres concernés</h3>
+                    <select id="membres-concernes">
+                        <option>Ahmed-Merouan-Mohammed-Mehdi</option>
+                        <option>Leila-Safia-Wiam-Aya</option>
+                        <option>Meriem-Aymen-Karim</option>
+                    </select>
                 </div>
             </div>
             <h3>Répartitions</h3>
-            <input type="radio" id="parts">
-            <label>Parts égales</label>
-            <input type="radio" id="Montant">
-            <label>Montant personnalisés</label>
+            <input type="radio" id="parts" value="parts égales">
+            <label for="parts">Parts égales</label>
+            <input type="radio" id="Montant" value="montant personnalisés">
+            <label for="Montant">Montant personnalisés</label>
             <div style="padding-top: 20px;display: flex; gap:2%;">
-                    <a href="depense.html">Annuler</a>
-                    <button id="ajouter" onclick="" >Ajouter la dépense</button>
-                </div>
+                <a href="depense.html">Annuler</a>
+                <button id="ajouter" >Ajouter la dépense</button>
+            </div>
 
 
-        </section>
+        </form>
     </main>
+    <script src="js/depenses.js"></script>
 </body>
 
 </html>

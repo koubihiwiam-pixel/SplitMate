@@ -73,6 +73,10 @@ main{
     padding-left: 300px;
     width: 90%;
     padding-top: 20px;
+
+    td{
+        padding: 12px;
+    }
     
     
     
