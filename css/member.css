@@ -209,3 +209,17 @@ tr{
  .delet{
     background: transparent;
  }
+ td{
+    padding: 9px;
+ }
+ th{
+    padding: 10px;
+ }
+ .delet{
+    color: red;
+    border: transparent;
+ }
+ .edit{
+    color: #2563EB;
+    border: transparent;
+ }
