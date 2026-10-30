@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page mombres</title>
@@ -41,23 +40,25 @@
     </div>
     <form class="forme-liste">
     <h4>Nom complet <span>*</span></h4>
-   <input type="text" placeholder="Ecrir votre nom"> 
+   <input id="nom" type="text" placeholder="Ecrir votre nom"> 
    <h4>Pseudo <span>*</span></h4>
-   <input type="text"placeholder="Ecrir pseudo">
+   <input id="pseudo"  type="text"placeholder="Ecrir pseudo">
    
     <h4>Groupes<span>*</span></h4>
    <select id="groupes">
-   <option value="">selectione un group</option>
+   <option  value="">selectione un group</option>
    
    </select>
 </form>
    
 
 <div class="buttons">
-    <button class="button-annuler">Annuler</button>
-    <button class="button-ajoute">+ Ajouter le membre</button>
+    <button id="button-annuler">Annuler</button>
+    <button  id="button-ajoute" onclick= creeUnMembre()>+ Ajouter le membre</button>
 </div>
 </section>
 </main>
+<script src="js/membres.js"></script>
+<script src="js/groupes.js"></script>
 </body>
 </html>
