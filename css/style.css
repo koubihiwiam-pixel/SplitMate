@@ -71,8 +71,9 @@ aside{
 main{
     margin-top: 40px;
     padding-left: 300px;
-    width: 100%;
+    width: 90%;
     padding-top: 20px;
+    
     
     
     
@@ -149,14 +150,15 @@ main{
     }
 }
 
-#formulaire{
+#formulaire , #formule{
     border: 1px solid gray;
     padding-left: 5%;
     padding-top: 2%;
-    padding-bottom: 4%;
-    
+    padding-bottom: 3%;
+    width: 70%;
     margin-top: 3%;
     border-radius: 40px;
+    
 
     #nomGroupe , #description{
         width: 50%;
@@ -171,13 +173,18 @@ main{
         gap:17%;
         flex-wrap: wrap;
     }
-    #annuler{
+    a{
         width: 20%;
         height: 30px;
-        border: transparent;
         border-radius: 5px;
+        text-decoration: none;
+        background-color: rgb(231, 226, 226);
+        color: #000000;
+        text-align: center;
+        line-height: 1.8;
+        
     }
-    #enregistrer{
+    #enregistrer , #ajouter{
         width: 20%;
         background-color: blue;
         color: #FFFFFF;

@@ -23,7 +23,7 @@
             <a href=""><i class="fa-solid fa-house"></i>Tableau de bord</a>
             <a href="groupe.html" class="selectionner"><i class="fa-solid fa-people-group"></i>Groupes</a>
             <a href="member.html"><i class="fa-solid fa-user"></i>Membres</a>
-            <a href=""><i class="fa-solid fa-wallet"></i>Dépenses</a>
+            <a href="depense.html"><i class="fa-solid fa-wallet"></i>Dépenses</a>
             <a href=""><i class="fa-solid fa-calculator"></i>Soldes & remboursements</a>
             <a href=""><i class="fa-solid fa-magnifying-glass"></i>Recherche & filtres</a>
 
@@ -31,7 +31,7 @@
         <main>
             <a href="groupe.html" style="text-decoration: none; color: black;"><i class="fa-solid fa-arrow-left-long"
                     style="font-size: 12px;" id="retour"></i> Retour</a>
-            <section class="formulaire" id="formulaire">
+            <section id="formulaire">
                 <h2>Information du groupe</h2>
                 <h3>Nom du groupe</h3>
                 <div>
@@ -57,15 +57,13 @@
 
                 </div>
                 <div style="padding-top: 20px;display: flex; gap:2%;">
-                    <button id="annuler" onclick="">Annuler</button>
+                    <a href="groupe.html">Annuler</a>
                     <button id="enregistrer" onclick="creerGroup()" >Créer le groupe</button>
                 </div>
             </section>
 
         </main>
-        <div class="grp">
-
-        </div>
+        
     </div>
 
     <script src="js/groupes.js"></script>
