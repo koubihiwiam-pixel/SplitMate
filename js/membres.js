@@ -46,8 +46,8 @@ function creeUnMembre() {
   
   let objectMembers = {
        id : memberConter,
-       groupeId : 1,
-       // objetGroup.id*
+       groupeId : selectValue,
+       
        nom : nomValue,
        pseudo: pseudoValue
 }     
@@ -59,8 +59,9 @@ function creeUnMembre() {
    
     window.location.href = "member.html";
     afficheMembers();
-    return
+   
   }
+  
 }
 
   function afficheMembers() {
@@ -68,7 +69,7 @@ function creeUnMembre() {
     let momber = JSON.parse(momberss) || [];
     console.log(momber);
 
-   
+   tablaux.innerHTML = "";
     momber.forEach(element => {
       
       var row = `<tr>
@@ -76,40 +77,64 @@ function creeUnMembre() {
                     <td>${element.pseudo}</td>
                     <td>voyage marakech</td>
                     <td>
-                        <button class= class="edit"><i class="fa-solid fa-pen" style="border:0px" data-id = "${element.id}" ></i></button>
-                        <button class="delet"><i class="fa-regular fa-trash-can"></i></button>
+                        <button class="edit"><i data-id = "${element.id}" class="fa-solid fa-pen" style="border:0px"></i></button>
+                        <button class="delet"><i  data-id = "${element.id}" class="fa-regular fa-trash-can" ></i></button>
                     </td>
                 </tr>`
                 
                 
                 
       tablaux.innerHTML += row;
-      
+    deleteMember();
+     
+
     }
     )};
 
-   
-afficheMembers();
- 
 function deleteMember(){
     let btnDeletMember = tablaux.querySelectorAll('.delet');
-    console.log(btnDeletMember);
+    
+    //console.log(btnDeletMember);
     btnDeletMember.forEach((btn) => {
       btn.addEventListener('click',function (delet) {
-        let deletMember = tablaux.querySelector('#data-id');
-        console.log(deletMember);
+       
+        let deletedMembreId = delet.target.getAttribute("data-id");
+        console.log(deletedMembreId);
+
+        members = members.filter((membre) =>membre.id != deletedMembreId);
+
+        localStorage.setItem('members',JSON.stringify(members));
+        let table = localStorage.getItem('members');
+        let tableMombre = JSON.parse(table);
+        console.log(tableMombre);
+      
         
         
-      })
+        });
+      });
+       
     }
-    )
 
+afficheMembers();
 
-    
+    function modifierUnMombre() {
+         let btnEditMember = tablaux.querySelectorAll('.edit');
+         //console.log(btnEditMember);
+         
+         btnEditMember.forEach((btn)=> {
+          btn.addEventListener('click',function (edit) {
+            let editMembreId = edit.target.getAttribute("data-id");
+           // console.log(editMembreId);
+            
+        
+        
+          })
+         })
+    }
 
-    
-}
-deleteMember();
+    modifierUnMombre();
+ 
+
 
 
 
