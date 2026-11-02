@@ -4,6 +4,13 @@
     justify-content: space-between;
     align-items: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     
+     width: 100%;
+        top: 0;
+        left:0;
+        
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
     
     .logo{
         display: flex;
@@ -29,9 +36,12 @@ hr{
 aside{
    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    width: 230px;
-   height: 500px;
+   height: 100vh;
    background-color: #F2FAFC;
    padding: 20px;
+    
+    top:52px;
+   left:0;
    i{
     color: blue;
     padding-top: 12px;
@@ -55,13 +65,13 @@ aside{
 .Corps{
     display: flex;
     
-    gap:40px;
-}
-button {
+   }
+  
+main{
+    margin-top: 40px;
     
-    
-   
-    border-radius: 14px;
+    width: 90%;
+    padding-top: 20px;
 }
 .hero{
     display: flex;
@@ -96,7 +106,7 @@ td{
 
 .recherche-Ajoute a{
     text-decoration: none;
-    padding: 8px 50px;
+    padding:20px;
     background-color: blue;
     color: #FFFFFF;
     border-radius: 14px;
@@ -104,10 +114,7 @@ td{
     
 }
 
-main{
 
-    width: 100%;
-}
 
 .reteur{
     color: #2563EB;
@@ -145,7 +152,7 @@ span{
     gap: 30px;
     
 }
-.button-annuler{
+#button-annuler{
     width: 30%;
     height: 50px;
     background-color: #F2FAFC;
@@ -153,7 +160,7 @@ span{
     border:1PX solid grey;
 }
 
-.button-ajoute{
+#button-ajoute{
     width: 30%;
     height: 50px;
     background-color: #2563EB;
@@ -206,4 +213,18 @@ tr{
  
  .delet{
     background: transparent;
+ }
+ td{
+    padding: 9px;
+ }
+ th{
+    padding: 10px;
+ }
+ .delet{
+    color: red;
+    border: transparent;
+ }
+ .edit{
+    color: #2563EB;
+    border: transparent;
  }

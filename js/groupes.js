@@ -26,7 +26,7 @@ function creerGroup() {
         alert(`Veuillez remplir les champs`);
     }
 
-    console.log(carteGroup);
+   // console.log(carteGroup);
     localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
     window.location.href = 'groupe.html';
 
@@ -54,7 +54,7 @@ function afficherGroupe() {
                     <span>ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
                 </div>`
-            console.log(item.id);
+           // console.log(item.id);
         });
     } else {
         groupes.textContent = "aucun groupe";
