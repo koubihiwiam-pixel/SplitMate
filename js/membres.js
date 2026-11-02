@@ -11,27 +11,23 @@ let listeGroupes = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
 let members = JSON.parse(localStorage.getItem('tableMomber')) || [];
 let memberConter= members.length +1;
- console.log(listeGroupes);
+// console.log(listeGroupes);
 
  let groupsSelect = document.getElementById('groupes');
- console.log(groupsSelect);
+ //console.log(groupsSelect);
 
  
  listeGroupes.forEach((element)=> {
    
-    console.log(element.id);
-    console.log(element.nom);
+  //  console.log(element.id);
+   // console.log(element.nom);
     let optionGroup = document.createElement('option');
-    console.log(optionGroup);
+   // console.log(optionGroup);
     
     optionGroup.innerHTML = element.nom;
     optionGroup.value = element.id;
     selectedGroupe.appendChild(optionGroup);
-    console.log(selectedGroupe.value);
-    
-
-
-    
+    //console.log(selectedGroupe.value);
     
   })
 
@@ -40,13 +36,13 @@ function creeUnMembre() {
   
     
   let nomValue = nomImput.value;
-  console.log(nomValue);
+  //console.log(nomValue);
   
   let pseudoValue = pseudoImput.value;
-  console.log(pseudoValue);
+  //console.log(pseudoValue);
     
  let selectGroup = selectedGroupe.value;
- console.log(selectGroup);
+ //console.log(selectGroup);
  
   
   if (!nomValue ) {
@@ -70,7 +66,7 @@ function creeUnMembre() {
 }     
 
       memberConter++;
-    console.log(objectMembers);
+   // console.log(objectMembers);
         members.push(objectMembers);
         localStorage.setItem('tableMomber',JSON.stringify(members));
    
@@ -84,19 +80,19 @@ function creeUnMembre() {
   function afficheMembers() {
     let momberss = localStorage.getItem('tableMomber');
     let momber = JSON.parse(momberss) || [];
-    console.log(momber);
+   // console.log(momber);
 
    tablaux.innerHTML = "";
     momber.forEach(element => {
       let groupTrouve = listeGroupes.find((group)=> {
          console.log(element.groupeId);
-          console.log(group.id);
+          //console.log(group.id);
           
            return element.groupeId == group.id;
            
 
       })
-      console.log("Groupe trouvé :", groupTrouve);  
+     // console.log("Groupe trouvé :", groupTrouve);  
       let nomGroupe;
       if (groupTrouve) {
         nomGroupe = groupTrouve.nom;
@@ -138,7 +134,7 @@ function deleteMember(){
         let table = localStorage.getItem('tableMomber');
 
         let tableMombre = JSON.parse(table);
-        console.log(tableMombre);
+       // console.log(tableMombre);
       afficheMembers();
         
         
@@ -147,28 +143,52 @@ function deleteMember(){
        
     }
 
-afficheMembers();
+
 
     function modifierUnMombre() {
          let btnEditMember = tablaux.querySelectorAll('.edit');
-         //console.log(btnEditMember);
+         console.log(btnEditMember);
          
          btnEditMember.forEach((btn)=> {
           btn.addEventListener('click',function (edit) {
             let editMembreId = edit.target.getAttribute("data-id");
-           // console.log(editMembreId);
-            
-        
-        
+           console.log(editMembreId);
+           let memberModifie = members.find((member)=> {
+            return editMembreId == member.id;
+
+           })
+           console.log(memberModifie);
+           localStorage.setItem('momberModifier',JSON.stringify(memberModifie));
+          //  window.location.href = "formulaire.html";
+           
           })
          })
+         let membreEdit = localStorage.getItem('momberModifier');
+        console.log(membreEdit);
+     
     }
 
-    modifierUnMombre();
+         afficheMembers();
+
+   
  
 
 
+ 
 
+   
+     // let newMembre =JSON.parse(membreEdit);
+           // console.log(newMembre);
+            //if (newMembre) {
+             // nomImput.value = newMembre.nom;
+             // pseudoImput.value = newMembre.pseudo;
+
+            //}
+    
+
+
+   
+    modifierUnMombre();
 
 
 
