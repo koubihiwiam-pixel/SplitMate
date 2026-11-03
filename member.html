@@ -42,17 +42,17 @@
             <a href="formulaire.html" class="btn-ajoute">Ajouter un membre</a>
               </div>
                <div class="groupe">
-            <select>
+            <select id="groupes">
 
-        <option value="group1">group1</option>
-        <option value="group2">group2</option>
+        <option value="">Choisir un groupe</option>
+      
        </select>
            </div> 
             
        
        <div class="card">
       
-            <table>
+            <table border="1">
                 <thead>
                 <tr>
                 <th>Nom</th>
@@ -61,17 +61,17 @@
                 <th>Actions</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>karim</td>
-                <td>kimo</td>
-                <td>voyage marakech</td>
-                <td>
-                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delet"><i class="fa-regular fa-trash-can"></i></button>
-                </td>
-            </tr>
-            </tbody>
+                <tbody id="table">
+                <!--<tr>
+                    <td>karim</td>
+                    <td>kimo</td>
+                    <td>voyage marakech</td>
+                    <td>
+                        <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delet"><i class="fa-regular fa-trash-can"></i></button>
+                    </td>
+                </tr>-->
+                </tbody>
             </table>
 
         </div>
@@ -80,5 +80,9 @@
         
    
     </main>
+    
+    <script src="js/groupes.js"></script>
+    <script src="js/membres.js"></script>
 </body>
+
 </html>
