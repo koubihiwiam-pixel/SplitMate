@@ -1,15 +1,21 @@
 let depenses = [];
 let groupeConter = 1;
+const groupes = document.getElementById('Groupe');
+//console.log(groupes.value);
 
-function addDepense() {
+
     const ajouter = document.getElementById('ajouter');
     const titre = document.getElementById('titre');
     const montant = document.getElementById('montant');
-    const groupe = document.getElementById('Groupe');
+    
+    
     const categorie = document.getElementById('categorie');
     const date = document.getElementById('date2');
     const payeur = document.getElementById('payeur');
     const membresConcernes = document.getElementById('membres-concernes');
+function addDepense() {
+   
+
 
     selectGroup ();
 
@@ -44,26 +50,30 @@ function addDepense() {
 
 let depenseRecue = localStorage.getItem('information');
 let depenseTable = JSON.parse(depenseRecue);
-console.log(depenseTable);
+//console.log(depenseTable);
 
 function afficherDepense(){
     
 }
 
 
+let groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) 
+console.log(groupesLocal);
 
 function selectGroup (){
-    const groupe = document.getElementById('Groupe');
-let valeursRecue = localStorage.getItem('infoPartagee');
-let tableInfo = JSON.parse(valeursRecue);
+    //const groupe = document.getElementById('Groupe');
 
-console.log(tableInfo);
-tableInfo.forEach(function(element){
+
+
+groupesLocal.forEach(function(element){
     //console.log(element.id);
     let option = document.createElement('option');
     option.innerHTML = element.nom;
     option.value = element.id;
-    groupe.appendChild(option);
+    groupes.appendChild(option);
+
+    //console.log(option.value);
+    
     
     
 });
@@ -71,3 +81,48 @@ tableInfo.forEach(function(element){
 
 
 addDepense();
+
+
+
+
+
+
+
+
+
+
+let members = JSON.parse(localStorage.getItem('tableMomber'));
+console.log(members);
+
+let newMombre;
+
+groupes.addEventListener('change', function () {
+   console.log(groupes.value);
+ 
+     newMombre = members.filter(function (element) {
+   return element.groupeId == groupes.value})
+  
+   console.log(newMombre);
+    newMombre.forEach(function (membre) {
+     let option = document.createElement('option');
+     
+    option.innerHTML = membre.nom;
+    option.value = membre.id;
+    payeur.appendChild(option);
+    
+})
+ newMombre.forEach(function (membre) {
+     let option = document.createElement('option');
+     
+    option.innerHTML = membre.nom;
+    option.value = membre.id;
+    membresConcernes.appendChild(option);
+
+   })
+})
+
+
+
+
+
+ 
