@@ -2,15 +2,18 @@ let nomImput = document.getElementById('nom');
 let pseudoImput = document.getElementById('pseudo');
 let selectedGroupe = document.getElementById('groupes');
 let buttonAjoute = document.getElementById('button-ajoute');
+let annule = document.getElementById('button-annuler');
+
 
 let tablaux = document.getElementById('table');
+
+let dailoge = document.getElementById('dailoge');
 
 //console.log(buttonAjoute);
 let listeGroupes = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
 
 let members = JSON.parse(localStorage.getItem('tableMomber')) || [];
-let memberConter= Date.now();
 // console.log(listeGroupes);
 
  let groupsSelect = document.getElementById('groupes');
@@ -59,7 +62,7 @@ function creeUnMembre() {
   }
  
   let objectMembers = {
-       id : memberConter,
+       id : Date.now(),
        groupeId : selectGroup,
        nom : nomValue,
        pseudo: pseudoValue
@@ -78,12 +81,12 @@ function creeUnMembre() {
 
 
   function afficheMembers() {
-    let momberss = localStorage.getItem('tableMomber');
-    let momber = JSON.parse(momberss) || [];
+
+    
    // console.log(momber);
 
    tablaux.innerHTML = "";
-    momber.forEach(element => {
+    members.forEach(element => {
       let groupTrouve = listeGroupes.find((group)=> {
          console.log(element.groupeId);
           //console.log(group.id);
@@ -151,6 +154,7 @@ function deleteMember(){
          
          btnEditMember.forEach((btn)=> {
           btn.addEventListener('click',function (edit) {
+            dailoge.showModal();
             let editMembreId = edit.target.getAttribute("data-id");
            console.log(editMembreId);
            let memberModifie = members.find((member)=> {
@@ -161,23 +165,17 @@ function deleteMember(){
           
            
           })
-         })
-         let membreEdit = localStorage.getItem('momberModifier');
-        console.log(membreEdit);
+        })
      
     }
+
+    annule.
+
 
          afficheMembers();
 
    
  
-
-
- 
-
-   
-
-
    
     modifierUnMombre();
 
