@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page depense</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-user-group" style="padding-left: 20px;"></i>
+            <p>Split<span>Mate</span></p>
+        </div>
+        <div><i class="fa-solid fa-circle-user" style="padding-right: 20px;"></i></div>
+    </header>
+    <div class="Corps">
+        <aside>
+            <a href=""><i class="fa-solid fa-house"></i>Tableau de bord</a>
+            <a href="groupe.html"><i class="fa-solid fa-people-group"></i>Groupes</a>
+            <a href="member.html"><i class="fa-solid fa-user"></i>Membres</a>
+            <a href="depense.html" class="selectionner"><i class="fa-solid fa-wallet"></i>Dépenses</a>
+            <a href=""><i class="fa-solid fa-calculator"></i>Soldes & remboursements</a>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i>Recherche & filtres</a>
+
+        </aside>
+        <main>
+            <div class="hero">
+                <div>
+                    <h1>Depenses</h1>
+                    <p>Toutes les dépenses de vos groupes</p>
+                </div>
+                <div class="recherche">
+                    <a href="ajouterDepense.html" class="button">+ Ajouter une dépense</a>
+                </div>
+            </div>
+            <table id="table" border="1" style="width: 100%;">
+                <thead style="height: 40px; background-color: #0B45F4; color: #FFFFFF;">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Montant</th>
+                        <th>Catégorie</th>
+                        <th>Payeur</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr >
+                        <td >Cours supermaché</td>
+                        <td >20,00 Euro</td>
+                        <td >Alimentation</td>
+                        <td >Karim</td>
+                        <td >13/06/2026</td>
+                        <td ><button style="background-color: transparent; border: 0; cursor: pointer;"><i class="fa-solid fa-pen" style="color: blue; font-size: 16px;"></i></button> <button style="background-color: transparent; border: 0; cursor: pointer; font-size: 16px;"><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></button> </td>
+                    </tr>
+                    <tr>
+                        <td >Restaurant</td>
+                        <td >45,00 Euro</td>
+                        <td >Restaurant</td>
+                        <td >Leila</td>
+                        <td >10/03/2026</td>
+                        <td ><button style="background-color: transparent; border: 0; cursor: pointer;"><i class="fa-solid fa-pen" style="color: blue; font-size: 16px;"></i></button> <button style="background-color: transparent; border: 0; cursor: pointer; font-size: 16px;"><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></button> </td>
+                    </tr> 
+                    
+                </tbody>
+            </table>
+
+
+
+        </main>
+    </div>
+    <script src="js/depenses.js"></script>
+</body>
+
+</html>
