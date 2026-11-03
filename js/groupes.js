@@ -1,16 +1,12 @@
 let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
-let groupConter = carteGroup.length + 1;
+let groupConter = Date.now();
+const nomGroupe = document.getElementById('nomGroupe');
+const description = document.getElementById('description');
+const devise = document.getElementById('devise');
+const date = document.getElementById('date');
 
 function creerGroup() {
-
-
-    const nomGroupe = document.getElementById('nomGroupe');
-    const description = document.getElementById('description');
-    const devise = document.getElementById('devise');
-    const date = document.getElementById('date');
-
-
     let objetGroup = {};
     if (nomGroupe.value && devise.value && date.value) {
         objetGroup.id = groupConter;
@@ -19,22 +15,23 @@ function creerGroup() {
         objetGroup.devise = devise.value;
         objetGroup.date = date.value;
         objetGroup.cloture = false;
-        groupConter++;
 
         carteGroup.push(objetGroup);
     } else {
         alert(`Veuillez remplir les champs`);
     }
 
-    console.log(carteGroup);
+    // console.log(carteGroup);
+
     localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
     window.location.href = 'groupe.html';
-
-
 }
+
+
 let groupes = document.getElementById('groupes');
 let valeursRecue = localStorage.getItem('infoPartagee');
 let tableInfo = JSON.parse(valeursRecue);
+
 function afficherGroupe() {
     if (valeursRecue) {
         groupes.innerHTML = "";
@@ -51,16 +48,23 @@ function afficherGroupe() {
                     <h2>${item.nom}</h2>
                     <h3>${item.description}</h3>
                     <h4 style="color: rgb(72, 70, 70);">540 € dépensés</h4>
-                    <span>ouvert</span>
+                    <span id="cloture">ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
                 </div>`
-            console.log(item.id);
+            // console.log(item.id);
         });
     } else {
         groupes.textContent = "aucun groupe";
     }
     supprimerCarte();
+
+
 }
+
+
+
+
+
 
 
 function supprimerCarte() {
@@ -79,17 +83,7 @@ function supprimerCarte() {
     });
 }
 
-/*function modifier(){
-    let updateCarte = groupes.querySelectorAll('.modifier');
-    updateCarte.forEach(function(btn){
-        btn.addEventListener("click", function(){
-            let idupdate = this.dataset.id;
 
 
-
-            
-            window.location.href = 'creerGroupe.html';
-        })
-    })
-}*/
 afficherGroupe();
+modifierGroup()
