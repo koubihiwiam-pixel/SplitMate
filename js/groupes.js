@@ -1,5 +1,4 @@
-let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
-
+let groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
 
 const nomGroupe = document.getElementById('nomGroupe');
@@ -18,14 +17,14 @@ function creerGroup() {
         objetGroup.date = date.value;
         objetGroup.cloture = false;
 
-        carteGroup.push(objetGroup);
+        groupesLocal.push(objetGroup);
     } else {
         alert(`Veuillez remplir les champs`);
-      return;
+        return;
     }
 
 
-    localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
+    localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
     window.location.href = 'groupe.html';
 }
 
@@ -34,15 +33,15 @@ let groupes = document.getElementById('groupes');
 
 
 function afficherGroupe() {
-    if (carteGroup) {
+    if (groupesLocal) {
         groupes.innerHTML = "";
-        tableInfo.forEach(function (item) {
+        groupesLocal.forEach(function (item) {
             groupes.innerHTML += `<div class="carte">
                     <div class="icones">
                         <i class="fa-solid fa-people-pulling"
                             style="background-color: #BBD1FB; padding: 10px; border-radius: 50%;color: blue;"></i>
                         <div>
-                            <button data-id="${item.id}"class="modifier"><i class="fa-solid fa-pen"></i></button>
+                            <button data-id="${item.id}" class="modifier"><i class="fa-solid fa-pen"></i></button>
                             <button data-id="${item.id}" class="supprimer" ><i class="fa-sharp fa-solid fa-trash"></i></button>
                         </div>
                     </div>
@@ -70,13 +69,17 @@ function modifierGroup() {
     const modif = document.getElementById('modify');
     let newTable;
     updateCarte.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-
+        btn.addEventListener('click', function (e) {
+            
             let idCarte = this.dataset.id;
-            console.log(idCarte);
+
             dialog.showModal();
-            newTable = tableInfo.find((carte) => carte.id == idCarte);
-            console.log(tableInfo.nom);
+
+            newTable = groupesLocal.find((carte) => carte.id == idCarte);
+
+            
+
+            console.log(groupesLocal.nom);
             modifyNomGroupe.value = newTable.nom;
             modifyDescription.value = newTable.description;
             modifyDevise.value = newTable.devise;
@@ -98,8 +101,8 @@ function modifierGroup() {
         newTable.date = dateModifie.value;
 
 
-        console.log(tableInfo);
-        localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+        console.log(groupesLocal);
+        localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
         afficherGroupe();
         window.location.href = 'groupe.html';
     })
@@ -115,10 +118,10 @@ function supprimerCarte() {
         btn.addEventListener("click", function () {
             if (confirm("vous voulez vraiment supprimer ?")) {
                 let idCarte = this.dataset.id;
-                tableInfo = tableInfo.filter(function (carte) {
+                groupesLocal = groupesLocal.filter(function (carte) {
                     return carte.id != idCarte;
                 });
-                localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+                localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
                 afficherGroupe();
             };
         });
