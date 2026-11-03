@@ -1,7 +1,6 @@
 let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
 
-
 const nomGroupe = document.getElementById('nomGroupe');
 const description = document.getElementById('description');
 const devise = document.getElementById('devise');
@@ -21,7 +20,7 @@ function creerGroup() {
         carteGroup.push(objetGroup);
     } else {
         alert(`Veuillez remplir les champs`);
-      return;
+        return;
     }
 
 
@@ -36,7 +35,7 @@ let groupes = document.getElementById('groupes');
 function afficherGroupe() {
     if (carteGroup) {
         groupes.innerHTML = "";
-        tableInfo.forEach(function (item) {
+        carteGroup.forEach(function (item) {
             groupes.innerHTML += `<div class="carte">
                     <div class="icones">
                         <i class="fa-solid fa-people-pulling"
@@ -70,12 +69,19 @@ function modifierGroup() {
     const modif = document.getElementById('modify');
     let newTable;
     updateCarte.forEach(function (btn) {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
 
+            console.log(e.target.closest('button'));
+            console.log(this);
+            
             let idCarte = this.dataset.id;
             console.log(idCarte);
             dialog.showModal();
+
             newTable = tableInfo.find((carte) => carte.id == idCarte);
+
+            
+
             console.log(tableInfo.nom);
             modifyNomGroupe.value = newTable.nom;
             modifyDescription.value = newTable.description;
