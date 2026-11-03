@@ -1,6 +1,8 @@
 let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
+//console.log(carteGroup);
 
-let groupConter = carteGroup.length + 1;
+
+let groupConter = Date.now();
 
 function creerGroup() {
 
@@ -19,7 +21,7 @@ function creerGroup() {
         objetGroup.devise = devise.value;
         objetGroup.date = date.value;
         objetGroup.cloture = false;
-        groupConter++;
+       
 
         carteGroup.push(objetGroup);
     } else {
@@ -78,18 +80,10 @@ function supprimerCarte() {
         });
     });
 }
-
-/*function modifier(){
-    let updateCarte = groupes.querySelectorAll('.modifier');
-    updateCarte.forEach(function(btn){
-        btn.addEventListener("click", function(){
-            let idupdate = this.dataset.id;
+console.log(
 
 
 
-            
-            window.location.href = 'creerGroupe.html';
-        })
-    })
-}*/
+
+);
 afficherGroupe();
