@@ -1,15 +1,17 @@
 let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
-let groupConter = Date.now();
+
+
 const nomGroupe = document.getElementById('nomGroupe');
 const description = document.getElementById('description');
 const devise = document.getElementById('devise');
 const date = document.getElementById('date');
 
+
 function creerGroup() {
     let objetGroup = {};
     if (nomGroupe.value && devise.value && date.value) {
-        objetGroup.id = groupConter;
+        objetGroup.id = Date.now();
         objetGroup.nom = nomGroupe.value;
         objetGroup.description = description.value;
         objetGroup.devise = devise.value;
@@ -19,6 +21,7 @@ function creerGroup() {
         carteGroup.push(objetGroup);
     } else {
         alert(`Veuillez remplir les champs`);
+      return;
     }
 
 
@@ -28,11 +31,10 @@ function creerGroup() {
 
 
 let groupes = document.getElementById('groupes');
-let valeursRecue = localStorage.getItem('infoPartagee');
-let tableInfo = JSON.parse(valeursRecue);
+
 
 function afficherGroupe() {
-    if (valeursRecue) {
+    if (carteGroup) {
         groupes.innerHTML = "";
         tableInfo.forEach(function (item) {
             groupes.innerHTML += `<div class="carte">
@@ -73,9 +75,7 @@ function modifierGroup() {
             let idCarte = this.dataset.id;
             console.log(idCarte);
             dialog.showModal();
-            newTable = tableInfo.find(function (carte) {
-                return carte.id == idCarte;
-            });
+            newTable = tableInfo.find((carte) => carte.id == idCarte);
             console.log(tableInfo.nom);
             modifyNomGroupe.value = newTable.nom;
             modifyDescription.value = newTable.description;
@@ -124,6 +124,7 @@ function supprimerCarte() {
         });
     });
 }
+
 
 
 

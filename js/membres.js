@@ -10,7 +10,7 @@ let listeGroupes = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
 
 let members = JSON.parse(localStorage.getItem('tableMomber')) || [];
-let memberConter= members.length +1;
+let memberConter= Date.now();
 // console.log(listeGroupes);
 
  let groupsSelect = document.getElementById('groupes');
@@ -65,7 +65,7 @@ function creeUnMembre() {
        pseudo: pseudoValue
 }     
 
-      memberConter++;
+      
    // console.log(objectMembers);
         members.push(objectMembers);
         localStorage.setItem('tableMomber',JSON.stringify(members));
@@ -158,8 +158,7 @@ function deleteMember(){
 
            })
            console.log(memberModifie);
-           localStorage.setItem('momberModifier',JSON.stringify(memberModifie));
-          //  window.location.href = "formulaire.html";
+          
            
           })
          })
@@ -177,14 +176,6 @@ function deleteMember(){
  
 
    
-     // let newMembre =JSON.parse(membreEdit);
-           // console.log(newMembre);
-            //if (newMembre) {
-             // nomImput.value = newMembre.nom;
-             // pseudoImput.value = newMembre.pseudo;
-
-            //}
-    
 
 
    
