@@ -1,14 +1,14 @@
 let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 
-let groupConter = carteGroup.length + 1;
-
-function creerGroup() {
-
-
-    const nomGroupe = document.getElementById('nomGroupe');
+let groupConter = Date.now();
+const nomGroupe = document.getElementById('nomGroupe');
     const description = document.getElementById('description');
     const devise = document.getElementById('devise');
     const date = document.getElementById('date');
+function creerGroup() {
+
+
+    
 
 
     let objetGroup = {};
@@ -19,17 +19,13 @@ function creerGroup() {
         objetGroup.devise = devise.value;
         objetGroup.date = date.value;
         objetGroup.cloture = false;
-        groupConter++;
+        
 
         carteGroup.push(objetGroup);
     } else {
         alert(`Veuillez remplir les champs`);
     }
 
-    console.log(carteGroup);
-    nomGroupe.value = "";
-    description.value = "";
-    date.value = "";
     localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
     window.location.href = 'groupe.html';
 
@@ -38,6 +34,7 @@ function creerGroup() {
 let groupes = document.getElementById('groupes');
 let valeursRecue = localStorage.getItem('infoPartagee');
 let tableInfo = JSON.parse(valeursRecue);
+
 function afficherGroupe() {
 
 
@@ -58,12 +55,12 @@ function afficherGroupe() {
                     <h2>${item.nom}</h2>
                     <h3>${item.description}</h3>
                     <h4 style="color: rgb(72, 70, 70);">540 € dépensés</h4>
-                    <span>ouvert</span>
+                    <span id="cloture">ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
                     
 
                 </div>`
-            console.log(item.id);
+            //console.log(item.id);
         });
 
     } else {
@@ -74,6 +71,49 @@ function afficherGroupe() {
 
 }
 
+function modifierGroup() {
+    let updateCarte = groupes.querySelectorAll('.modifier');
+    const dialog = document.querySelector('#modifierGroup');
+    const modif = document.getElementById('modify');
+    let newTable;
+    updateCarte.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+
+            let idCarte = this.dataset.id;
+            console.log(idCarte);
+            dialog.showModal();
+            newTable = tableInfo.find(function (carte) {
+                return carte.id == idCarte;
+            });
+            console.log(tableInfo.nom);
+            modifyNomGroupe.value = newTable.nom;
+            modifyDescription.value = newTable.description;
+            modifyDevise.value = newTable.devise;
+            dateModifie.value = newTable.date;
+
+
+
+        })
+    });
+
+
+    modif.addEventListener("click", function (e) {
+        e.preventDefault();
+
+
+        newTable.nom = modifyNomGroupe.value;
+        newTable.description = modifyDescription.value;
+        newTable.devise = modifyDevise.value;
+        newTable.date = dateModifie.value;
+
+
+        console.log(tableInfo);
+        localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+        afficherGroupe();
+        window.location.href = 'groupe.html';
+    })
+
+}
 
 function supprimerCarte() {
     let deleteCarte = groupes.querySelectorAll('.supprimer');
@@ -96,3 +136,4 @@ function supprimerCarte() {
     });
 }
 afficherGroupe();
+modifierGroup()
