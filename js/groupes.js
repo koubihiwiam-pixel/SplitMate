@@ -63,6 +63,49 @@ function afficherGroupe() {
 
 
 
+function modifierGroup() {
+    let updateCarte = groupes.querySelectorAll('.modifier');
+    const dialog = document.querySelector('#modifierGroup');
+    const modif = document.getElementById('modify');
+    let newTable;
+    updateCarte.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+
+            let idCarte = this.dataset.id;
+            console.log(idCarte);
+            dialog.showModal();
+            newTable = tableInfo.find(function (carte) {
+                return carte.id == idCarte;
+            });
+            console.log(tableInfo.nom);
+            modifyNomGroupe.value = newTable.nom;
+            modifyDescription.value = newTable.description;
+            modifyDevise.value = newTable.devise;
+            dateModifie.value = newTable.date;
+
+
+
+        })
+    });
+
+
+    modif.addEventListener("click", function (e) {
+        e.preventDefault();
+
+
+        newTable.nom = modifyNomGroupe.value;
+        newTable.description = modifyDescription.value;
+        newTable.devise = modifyDevise.value;
+        newTable.date = dateModifie.value;
+
+
+        console.log(tableInfo);
+        localStorage.setItem('infoPartagee', JSON.stringify(tableInfo));
+        afficherGroupe();
+        window.location.href = 'groupe.html';
+    })
+
+}
 
 
 

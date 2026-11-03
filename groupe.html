@@ -24,7 +24,7 @@
             <a href=""><i class="fa-solid fa-house"></i>Tableau de bord</a>
             <a href="groupe.html" class="selectionner"><i class="fa-solid fa-people-group"></i>Groupes</a>
             <a href="member.html"><i class="fa-solid fa-user"></i>Membres</a>
-            <a href="depense.html"><i class="fa-solid fa-wallet"></i>Dépenses</a>
+            <a href=""><i class="fa-solid fa-wallet"></i>Dépenses</a>
             <a href=""><i class="fa-solid fa-calculator"></i>Soldes & remboursements</a>
             <a href=""><i class="fa-solid fa-magnifying-glass"></i>Recherche & filtres</a>
 
@@ -42,19 +42,48 @@
                 </div>
             </div>
             <div id="groupes">
-                <!--   les carte affichées   -->
+
             </div>
+            <dialog id="modifierGroup">
+                <form id="formulaireUpdate">
+                    <h2>Information du groupe</h2>
+                    <h3>Nom du groupe</h3>
+                    <div>
+                        <input id="modifyNomGroupe" placeholder="Ex: Voyage Marrakech">
+                    </div>
 
-            
-              
-            
+                    <h3>Description</h3>
+                    <div><textarea id="modifyDescription" rows="5" cols="60">Ex: Vacances entre amis.. </textarea>
+                    </div>
 
+                    <div class="info">
+                        <div>
+                            <h3>Devise</h3>
+                            <select id="modifyDevise">
+                                <option value="MAD">MAD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <h3>Date de début</h3>
+                            <input type="date" id="dateModifie">
+                        </div>
+                        <button id="cloture">cloturé</button>
+
+                    </div>
+                    <div style="padding-top: 20px;display: flex; gap:2%;">
+                        <a href="groupe.html">Annuler</a>
+                        <button id="modify">Modifier</button>
+                    </div>
+                </form>
+            </dialog>
 
 
         </main>
     </div>
     <script src="js/groupes.js"></script>
-    
 </body>
 
 </html>
