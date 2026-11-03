@@ -69,6 +69,33 @@
          </div>  
         </section>
 
+        <dialog id="dailoge">
+            <section class="formulaire" id="forme">
+            <div class="title">
+            <h2><i class="fa-solid fa-users"></i> Ajouter un membre:</h2>
+             <P>Ajoutez une personne à votre groupe pour partager les dépenses.</P>
+        </div>
+             <form class="forme-liste">
+             <h4>Nom complet <span>*</span></h4>
+        <input id="nom" type="text" placeholder="Ecrir votre nom"> 
+        <h4>Pseudo <span>*</span></h4>
+        <input id="pseudo"  type="text"placeholder="Ecrir pseudo">
+   
+             <h4>Groupes<span>*</span></h4>
+         <select id="groupes">
+            <option  value="">Choisir un groupe</option>
+   
+        </select>
+        </form>
+   
+
+<div class="buttons">
+    <button id="button-annuler">Annuler</button>
+    <button  id="button-ajoute" onclick= creeUnMembre()>+ Ajouter le membre</button>
+</div>
+</section>
+        </dialog>
+
         
         
    
