@@ -3,6 +3,8 @@ let pseudoImput = document.getElementById('pseudo');
 let selectedGroupe = document.getElementById('groupes');
 let buttonAjoute = document.getElementById('button-ajoute');
 let annule = document.getElementById('button-annuler');
+let buttonModifier = document.getElementById('button-modifier')
+//console.log(buttonModifier);
 
 
 let tablaux = document.getElementById('table');
@@ -88,7 +90,7 @@ function creeUnMembre() {
    tablaux.innerHTML = "";
     members.forEach(element => {
       let groupTrouve = listeGroupes.find((group)=> {
-         console.log(element.groupeId);
+       //  console.log(element.groupeId);
           //console.log(group.id);
           
            return element.groupeId == group.id;
@@ -108,8 +110,8 @@ function creeUnMembre() {
                     <td>${element.pseudo}</td>
                     <td> ${nomGroupe}</td>
                     <td>
-                        <button class="edit"><i data-id = "${element.id}" class="fa-solid fa-pen" style="border:0px"></i></button>
-                        <button class="delet"><i  data-id = "${element.id}" class="fa-regular fa-trash-can" ></i></button>
+                        <button class="edit"><i data-id = ${element.id} class="fa-solid fa-pen" style="border:0px"></i></button>
+                        <button class="delet"> <i data-id = ${element.id} class="fa-regular fa-trash-can" ></i></button>
                     </td>
                 </tr>`
                 
@@ -130,7 +132,7 @@ function deleteMember(){
       btn.addEventListener('click',function (delet) {
        
         let deletedMembreId = delet.target.getAttribute("data-id");
-        console.log(deletedMembreId);
+       // console.log(deletedMembreId);
 
         members = members.filter((membre) =>membre.id != deletedMembreId)
         localStorage.setItem('tableMomber',JSON.stringify(members));
@@ -151,33 +153,44 @@ function deleteMember(){
     function modifierUnMombre() {
          let btnEditMember = tablaux.querySelectorAll('.edit');
          console.log(btnEditMember);
-         
+         let memberModifie;
          btnEditMember.forEach((btn)=> {
           btn.addEventListener('click',function (edit) {
             dailoge.showModal();
             let editMembreId = edit.target.getAttribute("data-id");
            console.log(editMembreId);
-           let memberModifie = members.find((member)=> {
-            return editMembreId == member.id;
-
-           })
+            memberModifie = members.find((member)=> {
+            return editMembreId == member.id; })
            console.log(memberModifie);
-          
-           
+             nomImput.value = memberModifie.nom;
+            pseudoImput.value = memberModifie.pseudo;
           })
         })
-     
-    }
+      
+
+  buttonModifier.addEventListener('click',function () {
+     memberModifie.nom =  nomImput.value;
+      memberModifie.pseudo =  pseudoImput.value;
+    
 
   
+   })
 
+    } 
+    
+
+   annule.addEventListener('click',function () {
+    dailoge.close();
+   })
+
+   
 
          afficheMembers();
-
+modifierUnMombre();
    
  
    
-    modifierUnMombre();
+    
 
 
 

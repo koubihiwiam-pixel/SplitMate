@@ -7,10 +7,11 @@ let depenses = JSON.parse(localStorage.getItem('depense')) || [];
     const categorie = document.getElementById('categorie');
     const date = document.getElementById('date2');
     const payeur = document.getElementById('payeur');
+    const membresConcernes = document.getElementById("membres-concernes");
 
 function addDepense() {
 
-    
+    selectPayeur();
     selectGroup();
 
     ajouter.addEventListener('click', function (e) {
@@ -70,6 +71,35 @@ function selectGroup() {
 }
 
 
+
+
+function selectPayeur() {
+    let members = JSON.parse(localStorage.getItem("tableMomber")); 
+    console.log(members);
+     let newMombre;
+
+ groupe.addEventListener("change", function () {   
+    console.log(groupe.value);
+   newMombre = members.filter(function (element) {
+    return element.groupeId == groupe.value;   });
+    payeur.innerHTML = "";
+   console.log(newMombre);   newMombre.forEach(function (membre) {  
+       let option = document.createElement("option");
+    
+       option.innerHTML = membre.nom; 
+         option.value = membre.id;
+    payeur.appendChild(option);  
+ });   
+ membresConcernes.innerHTML ="";
+ newMombre.forEach(function (membre) {  
+       let option = document.createElement("option");
+     option.innerHTML = membre.nom;    
+      option.value = membre.id;
+    membresConcernes.appendChild(option);   
+}); 
+});;
+ }
+
 function afficherDepense() {
 
     const listeDepense = document.getElementById('listeDepense');
@@ -118,3 +148,77 @@ function afficherDepense() {
     addDepense();
 
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
