@@ -66,9 +66,74 @@
                         <td >10/03/2026</td>
                         <td ><button style="background-color: transparent; border: 0; cursor: pointer;"><i class="fa-solid fa-pen" style="color: blue; font-size: 16px;"></i></button> <button style="background-color: transparent; border: 0; cursor: pointer; font-size: 16px;"><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></button> </td>
                     </tr>  -->
-                    
+
                 </tbody>
             </table>
+            <dialog id="modifier-depense">
+                <form id="formule-update">
+                    <h2>Information générale</h2>
+                    <h3>Titre</h3>
+                    <div>
+                        <input id="titreInputModify" placeholder="Ex : Courses">
+                    </div>
+                    <h3>Montant</h3>
+                    <div>
+                        <input id="montantInputModify" placeholder="Ex : 120">
+                    </div>
+                    <div class="info">
+                        <div>
+                            <h3>Groupe</h3>
+                            <select id="GroupeModify">
+
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Catégorie</h3>
+                            <select id="categorieModify">
+                                <option>Nourriture</option>
+                                <option>Transport</option>
+                                <option>Logement</option>
+                                <option>Loisirs</option>
+                                <option>Courses</option>
+                                <option>Factures</option>
+                                <option>Shopping</option>
+                                <option>Santé</option>
+                                <option>Voyage</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Date</h3>
+                            <input id="dateModify" type="date">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div>
+                            <h3>Payeur</h3>
+                            <select id="payeurModify">
+
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Membres concernés</h3>
+                            <select id="membresModify">
+
+                            </select>
+                        </div>
+                    </div>
+                    <h3>Répartitions</h3>
+                    <input type="radio" id="parts-modify" value="parts égales">
+                    <label for="parts">Parts égales</label>
+                    <input type="radio" id="Montant-modify" value="montant personnalisés">
+                    <label for="Montant">Montant personnalisés</label>
+                    <div style="padding-top: 20px;display: flex; gap:2%;">
+                        <a href="depense.html">Annuler</a>
+                        <button id="idModifier">Modifier</button>
+                    </div>
+
+
+                </form>
+
+            </dialog>
 
 
 

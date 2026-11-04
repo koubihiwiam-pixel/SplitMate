@@ -125,7 +125,7 @@ function afficherDepense() {
             <td>${item.date}</td>
 
             <td>
-                <button data-id="${item.id}" type="button" style="background-color: transparent; border: 0; cursor: pointer;">
+                <button data-id="${item.id}" class="toModify" type="button" style="background-color: transparent; border: 0; cursor: pointer;">
                     <i class="fa-solid fa-pen" style="color: blue; font-size: 16px;"></i>
                 </button>
 
@@ -152,9 +152,7 @@ function supprimerDepense() {
         btn.addEventListener("click", function () {
             if(confirm("vous voulez vraiment supprimer ?")){
             let idDepense = this.dataset.id;
-            //console.log(idDepense);
             depenses = depenses.filter((depense) => depense.id != idDepense);
-            //console.log(depenses);
             localStorage.setItem('depense', JSON.stringify(depenses));
             afficherDepense();
             }
@@ -162,10 +160,43 @@ function supprimerDepense() {
     })
 }
 
+function modifierDepense(){
+    const modifier = document.querySelectorAll('.toModify');
+    const dialog = document.getElementById('modifier-depense')
+    console.log(modifier);
+    let newdepense;
+    modifier.forEach(function(btn){
+        btn.addEventListener("click", function(){
+            let idDepense = this.dataset.id;
+            console.log(idDepense);
+            
+            newdepense = depenses.find((depense)=> depense.id == idDepense);
+            console.log(newdepense)
+            dialog.showModal();
+            titreInputModify.value = newdepense.titre;
+            montantInputModify.value = newdepense.montant;
+            categorieModify.value = newdepense.categorie;
+            dateModify.value = newdepense.date;
+        });
+    });
+    const update = document.getElementById('idModifier');
+    update.addEventListener("click" , function(){
+        newdepense.titre = titreInputModify.value;
+        newdepense.montant = montantInputModify.value;
+        newdepense.categorie = categorieModify.value;
+        newdepense.date = dateModify.value;
+
+        localStorage.setItem('depense',JSON.stringify(depenses));
+        afficherDepense();
+    })
+
+
+
+}
 
 afficherDepense();
 addDepense();
-
+modifierDepense()
 
 
 
