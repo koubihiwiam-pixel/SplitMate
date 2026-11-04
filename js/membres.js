@@ -173,6 +173,7 @@ function deleteMember(){
       memberModifie.pseudo =  pseudoImput.value;
     
 
+  
    })
 
     } 
