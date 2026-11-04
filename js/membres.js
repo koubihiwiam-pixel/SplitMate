@@ -169,7 +169,7 @@ function deleteMember(){
      
     }
 
-    annule.
+  
 
 
          afficheMembers();

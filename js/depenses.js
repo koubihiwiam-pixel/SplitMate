@@ -1,7 +1,5 @@
-let depenses = [];
-let groupeConter = 1;
 
-function addDepense() {
+let depenses = JSON.parse(localStorage.getItem('depense')) || [];
     const ajouter = document.getElementById('ajouter');
     const titre = document.getElementById('titre');
     const montant = document.getElementById('montant');
@@ -9,65 +7,114 @@ function addDepense() {
     const categorie = document.getElementById('categorie');
     const date = document.getElementById('date2');
     const payeur = document.getElementById('payeur');
-    const membresConcernes = document.getElementById('membres-concernes');
 
-    selectGroup ();
-
+function addDepense() {
 
     
-    ajouter.addEventListener('click', function(e){
+    selectGroup();
+
+    ajouter.addEventListener('click', function (e) {
+
         e.preventDefault();
-        let objetDepenses = {};
-   if(titre.value && montant.value && date.value ){
-        objetDepenses.id = groupeConter;
-        objetDepenses.groupId = groupe.value;
-        objetDepenses.titre = titre.value;
-        objetDepenses.montant = montant.value;
-        objetDepenses.categorie = categorie.value;
-        objetDepenses.date = date.value;
-        objetDepenses.payeurId = payeur.value;
-        groupeConter++;
 
-        depenses.push(objetDepenses);
-        console.log(objetDepenses);
-        console.log(depenses);
-    localStorage.setItem('information', JSON.stringify(depenses));
-    window.location.href = 'depense.html';
-   }
-   else{
-    alert('remplir les champs');
-   }
-   
-    })
-    
+        if (titre.value && montant.value && date.value) {
+
+            let objetDepenses = {};
+
+            objetDepenses.id = Date.now();
+            objetDepenses.groupId = groupe.value;
+            objetDepenses.titre = titre.value;
+            objetDepenses.montant = montant.value;
+            objetDepenses.categorie = categorie.value;
+            objetDepenses.date = date.value;
+            objetDepenses.payeurId = payeur.value;
+
+            depenses.push(objetDepenses);
+
+            localStorage.setItem('depense', JSON.stringify(depenses));
+            window.location.href = 'depense.html'
+
+            titre.value = "";
+            montant.value = "";
+            date.value = "";
+
+            afficherDepense();
+
+        } else {
+
+            alert('Remplir les champs');
+
+        }
+
+    });
+
 }
 
-let depenseRecue = localStorage.getItem('information');
-let depenseTable = JSON.parse(depenseRecue);
-console.log(depenseTable);
+function selectGroup() {
 
-function afficherDepense(){
+    const groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
+
+    groupe.innerHTML = '';
+
+    groupesLocal.forEach(function (element) {
+
+        let option = document.createElement('option');
+
+        option.innerHTML = element.nom;
+        option.value = element.id;
+
+        groupe.appendChild(option);
+
+    });
+
+}
+
+
+function afficherDepense() {
+
+    const listeDepense = document.getElementById('listeDepense');
+
+    if (listeDepense){
+        listeDepense.innerHTML = "";
+
+    depenses.forEach(function (item) {
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${item.titre}</td>
+            <td>${item.montant}</td>
+            <td>${item.categorie}</td>
+            <td>Karim</td>
+            <td>${item.date}</td>
+
+            <td>
+                <button type="button" style="background-color: transparent; border: 0; cursor: pointer;">
+                    <i class="fa-solid fa-pen" style="color: blue; font-size: 16px;"></i>
+                </button>
+
+                <button type="button" style="background-color: transparent; border: 0; cursor: pointer;">
+                    <i class="fa-solid fa-trash" style="color: red;"></i>
+                </button>
+            </td>
+        `;
+
+        listeDepense.appendChild(tr);
+
+    });
+    }
+
     
+
 }
 
 
 
-function selectGroup (){
-    const groupe = document.getElementById('Groupe');
-let valeursRecue = localStorage.getItem('infoPartagee');
-let tableInfo = JSON.parse(valeursRecue);
-
-console.log(tableInfo);
-tableInfo.forEach(function(element){
-    //console.log(element.id);
-    let option = document.createElement('option');
-    option.innerHTML = element.nom;
-    option.value = element.id;
-    groupe.appendChild(option);
-    
-    
-});
-}
 
 
-addDepense();
+
+    afficherDepense();
+
+    addDepense();
+
+
