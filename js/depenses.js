@@ -51,28 +51,10 @@ function addDepense() {
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
 function selectGroup() {
 
-    const groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
+    
     if (!groupe) return
     groupe.innerHTML = '';
 
@@ -138,9 +120,6 @@ function afficherDepense() {
 
 
         depenses.forEach(function (item) {
-
-
-
             const tr = document.createElement("tr");
 
             tr.innerHTML = `
@@ -158,16 +137,12 @@ function afficherDepense() {
                 <button data-id="${item.id}" class="delete" type="button" style="background-color: transparent; border: 0; cursor: pointer;">
                     <i class="fa-solid fa-trash" style="color: red;"></i>
                 </button>
-            </td>
-        `;
+            </td>  `;
 
             listeDepense.appendChild(tr);
-
         });
     }
-
     supprimerDepense();
-
 }
 
 
@@ -220,6 +195,7 @@ function modifierDepense(){
 
 
 }
+
 
 afficherDepense();
 addDepense();

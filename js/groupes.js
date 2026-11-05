@@ -1,5 +1,5 @@
 let groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
-
+let depenses = JSON.parse(localStorage.getItem('depense')) || [];
 
 const nomGroupe = document.getElementById('nomGroupe');
 const description = document.getElementById('description');
@@ -30,12 +30,44 @@ function creerGroup() {
 
 
 let groupes = document.getElementById('groupes');
+groupesLocal.forEach(function(item){
+        let total =0;
+        depenses.forEach(function(depense){
+            if(depense.groupId == item.id){
+                total += Number(depense.montant);
+
+            }
+
+        })
+
+})
 
 
+function totalDepense(){
+    let totals =[];
+    groupesLocal.forEach(function(item){
+        let total =0;
+        depenses.forEach(function(depense){
+            if(depense.groupId == item.id){
+                total += Number(depense.montant);
+
+            }
+
+        })
+        // console.log(item.nom)
+        // console.log(total);
+        totals.push(total)
+    });
+return totals;
+};
 function afficherGroupe() {
+    let total = totalDepense();
+    console.log(total);
     if (groupesLocal) {
         groupes.innerHTML = "";
-        groupesLocal.forEach(function (item) {
+        
+        groupesLocal.forEach(function (item , index) {
+            
             groupes.innerHTML += `<div class="carte">
                     <div class="icones">
                         <i class="fa-solid fa-people-pulling"
@@ -47,8 +79,8 @@ function afficherGroupe() {
                     </div>
                     <h2>${item.nom}</h2>
                     <h3>${item.description}</h3>
-                    <h4 style="color: rgb(72, 70, 70);">540 € dépensés</h4>
-                    <span id="cloture">ouvert</span>
+                    <h4 style="color: rgb(72, 70, 70);">${total[index]} dépensés</h4>
+                    <span id="cloture" class="ouvert">ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
                 </div>`
 
@@ -67,6 +99,8 @@ function modifierGroup() {
     let updateCarte = groupes.querySelectorAll('.modifier');
     const dialog = document.querySelector('#modifierGroup');
     const modif = document.getElementById('modify');
+    const cloture = document.getElementById('clotures');
+    const cloturer = document.getElementById('cloture')
     let newTable;
     updateCarte.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
@@ -77,18 +111,31 @@ function modifierGroup() {
 
             newTable = groupesLocal.find((carte) => carte.id == idCarte);
 
-            
 
             console.log(groupesLocal.nom);
             modifyNomGroupe.value = newTable.nom;
             modifyDescription.value = newTable.description;
             modifyDevise.value = newTable.devise;
             dateModifie.value = newTable.date;
-
-
-
         })
     });
+       cloture.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (confirm("Voulez-vous clôturer ce groupe ?")) {
+        newTable.cloture = true;
+
+        localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
+
+        
+        cloturer.classList.remove('ouvert');
+        cloturer.classList.add('close');
+        cloturer.textContent = "Clôturé";
+        afficherGroupe();
+        dialog.close();
+        
+    }
+});
 
 
     modif.addEventListener("click", function (e) {

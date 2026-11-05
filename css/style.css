@@ -129,10 +129,18 @@ main{
 
         }
         span{
-            background-color: #09B367;
+            
             padding: 2px 5px;
             border-radius: 20px;
+            
+        }
+        .ouvert{
+            background-color: #09B367;
             color:#044427;
+        }
+        .close{
+            background-color: #FFCCCC;
+            color:#990000;
         }
         .icones{
             display: flex;
