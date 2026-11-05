@@ -1,0 +1,173 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left:0;
+    
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    
+    .logo{
+        display: flex;
+        gap:10px;
+        align-items: center;
+        
+    }
+    i{
+        color: blue;
+        font-size: 25px;
+    }
+    span{
+        color: blue;
+    }
+}
+body {
+    padding-left:  10px;
+    padding-right: 10px;
+}
+hr{
+    margin: 0;
+}
+aside{
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   width: 250px;
+   height: 100vh;
+   background-color: #F2FAFC;
+   padding: 20px;
+   position: fixed;
+   top:52px;
+   left:0;
+   
+   i{
+    color: blue;
+    padding-top: 12px;
+    
+   }
+   a{
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    color: #000000;
+    line-height: 2.6;
+   }
+   .selectionner{
+    background-color:#BBD1FB;
+    color: blue;
+    padding-left: 8px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+   }
+}
+.Corps{
+    display: flex;
+}
+main{
+    margin-top: 40px;
+    padding-left: 300px;
+    width: 90%;
+    padding-top: 20px;
+
+    td{
+        padding: 12px;
+    }
+    
+    
+    
+    
+}
+.button {
+    background-color: blue;
+    padding: 8px 20px;
+    color: #FFFFFF;
+    border-radius: 14px;
+    text-decoration: none;
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rembersements{
+   padding: 20px;
+    display: flex;
+    gap: 20px;
+    
+   
+   
+}
+.carte-total{
+   
+}
+#carte{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border:1px solid transparent;
+    padding: 30px;
+    border-radius: 20px;
+    background-color:#BDD2FA ;
+    line-height: 10px;
+    color: blue;
+    
+
+}
+h4{
+    font-size: 20px;
+}
+.icon1{
+    color: blue;
+    font-size: 50px;
+    
+
+}
+#recevoir{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border:1px solid transparent;
+  padding: 30px;
+    border-radius: 20px;
+    background-color:#E8F7EE ;
+    line-height: 10px;
+}
+#rembourser{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border:1px solid transparent;
+    padding: 30px;
+    border-radius: 20px;
+    background-color:#FFF0E8;
+    line-height: 10px;
+}
+#rembourse-effectué{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border:1px solid transparent;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #F3E8FF;
+    line-height: 10px;
+}
+.icon2{
+    color: #16A34A;
+    font-size: 50px;
+   
+}
+.icon3{
+    color: #EA580C;
+    font-size: 50px;
+}
+.icon4{
+    color: #7E22CE;
+    font-size: 50px;
+    
+}

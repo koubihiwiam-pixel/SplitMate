@@ -80,18 +80,20 @@
                 </div>
                 <div>
                     <h3>Membres concernés</h3>
-                    <select id="membres-concernes">
-                        <option>choisir des membres</option>
-                        <!--  <option>Leila-Safia-Wiam-Aya</option>
-                        <option>Meriem-Aymen-Karim</option> !--->
-                    </select>
+                    <div id="membres-concernes">
+                       
+                    </div>
                 </div>
             </div>
             <h3>Répartitions</h3>
-            <input type="radio" id="parts" value="parts égales">
-            <label for="parts">Parts égales</label>
-            <input type="radio" id="Montant" value="montant personnalisés">
+            <div id="par">
+            <input type="radio" id="parts"  name ="repartition" value="parts égales">
+            <label for="parts" id="parts">Parts égales</label>
+            </div>
+            <div id="par">
+            <input type="radio" id="Montant"  name ="repartition" value="montant personnalisés">
             <label for="Montant">Montant personnalisés</label>
+            </div>
             <div style="padding-top: 20px;display: flex; gap:2%;">
                 <a href="depense.html">Annuler</a>
                 <button id="ajouter">Ajouter la dépense</button>

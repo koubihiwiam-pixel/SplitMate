@@ -29,6 +29,7 @@ function addDepense() {
             objetDepenses.categorie = categorie.value;
             objetDepenses.date = date.value;
             objetDepenses.payeurId = payeur.value;
+            objetDepenses.parts = [];
 
             depenses.push(objetDepenses);
 
@@ -97,11 +98,18 @@ function selectPayeur() {
 
         membresConcernes.innerHTML = "";
         newMombre.forEach(function (membre) {
-            let option = document.createElement("option");
-            option.innerHTML = membre.nom;
-            option.value = membre.id;
-            membresConcernes.appendChild(option);
+            let div = document.createElement("div");
+
+            div.innerHTML += ` <input type="checkbox" id="member" value ="${membre.id}" checked />
+                             <label for="membre">${membre.nom}</label>
+
+                                    `
+                    
+            membresConcernes.appendChild(div);
+
+
         });
+
     });;
 }
 
@@ -182,12 +190,24 @@ function modifierDepense(){
         localStorage.setItem('depense',JSON.stringify(depenses));
         afficherDepense();
     })
+
+
+
+
 }
 
 
 afficherDepense();
 addDepense();
 modifierDepense()
+
+
+
+
+function  montantEnPartsEgales() {
+   
+}
+   
 
 
 
