@@ -130,6 +130,7 @@ function deleteMember(){
     //console.log(btnDeletMember);
     btnDeletMember.forEach((btn) => {
       btn.addEventListener('click',function (delet) {
+         if (confirm("vous voulez vraiment supprimer ?")) {
        
         let deletedMembreId = delet.target.getAttribute("data-id");
        // console.log(deletedMembreId);
@@ -141,6 +142,7 @@ function deleteMember(){
         let tableMombre = JSON.parse(table);
        // console.log(tableMombre);
       afficheMembers();
+    }
         
         
         });
@@ -187,7 +189,11 @@ function deleteMember(){
 
          afficheMembers();
 modifierUnMombre();
-   
+
+
+
+
+
  
    
     
