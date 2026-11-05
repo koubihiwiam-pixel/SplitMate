@@ -1,66 +1,182 @@
-let carteGroup = JSON.parse(localStorage.getItem('infoPartagee')) || [];
+let groupesLocal = JSON.parse(localStorage.getItem('infoPartagee')) || [];
+let depenses = JSON.parse(localStorage.getItem('depense')) || [];
 
-let groupConter = carteGroup.length + 1;
+const nomGroupe = document.getElementById('nomGroupe');
+const description = document.getElementById('description');
+const devise = document.getElementById('devise');
+const date = document.getElementById('date');
+
 
 function creerGroup() {
-    
+    let objetGroup = {};
+    if (nomGroupe.value && devise.value && date.value) {
+        objetGroup.id = Date.now();
+        objetGroup.nom = nomGroupe.value;
+        objetGroup.description = description.value;
+        objetGroup.devise = devise.value;
+        objetGroup.date = date.value;
+        objetGroup.cloture = false;
 
-    const nomGroupe = document.getElementById('nomGroupe');
-    const description = document.getElementById('description');
-    const devise = document.getElementById('devise');
-    const date = document.getElementById('date');
+        groupesLocal.push(objetGroup);
+    } else {
+        alert(`Veuillez remplir les champs`);
+        return;
+    }
 
 
-
-
-    let objetGroup = {
-        id: groupConter,
-        nom: nomGroupe.value,
-        description: description.value,
-        devise: devise.value,
-        date: date.value,
-        cloture: false,
-    };
-    groupConter++;
-    carteGroup.push(objetGroup);
-    console.log(carteGroup);
-    localStorage.setItem('infoPartagee', JSON.stringify(carteGroup));
+    localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
     window.location.href = 'groupe.html';
-    
-
 }
 
+
+let groupes = document.getElementById('groupes');
+groupesLocal.forEach(function(item){
+        let total =0;
+        depenses.forEach(function(depense){
+            if(depense.groupId == item.id){
+                total += Number(depense.montant);
+
+            }
+
+        })
+
+})
+
+
+function totalDepense(){
+    let totals =[];
+    groupesLocal.forEach(function(item){
+        let total =0;
+        depenses.forEach(function(depense){
+            if(depense.groupId == item.id){
+                total += Number(depense.montant);
+
+            }
+
+        })
+        // console.log(item.nom)
+        // console.log(total);
+        totals.push(total)
+    });
+return totals;
+};
 function afficherGroupe() {
-    let groupes = document.getElementById('groupes');
-    const valeursRecue = localStorage.getItem('infoPartagee');
-    if(valeursRecue){
-        const tableInfo = JSON.parse(valeursRecue);
-        console.log(tableInfo);
+    let total = totalDepense();
+    console.log(total);
+    if (groupesLocal) {
         groupes.innerHTML = "";
-        tableInfo.forEach(function (item) {
+        
+        groupesLocal.forEach(function (item , index) {
+            
             groupes.innerHTML += `<div class="carte">
                     <div class="icones">
                         <i class="fa-solid fa-people-pulling"
                             style="background-color: #BBD1FB; padding: 10px; border-radius: 50%;color: blue;"></i>
                         <div>
-                            <button class="modifier"><i class="fa-solid fa-pen"></i></button>
-                            <button class="supprimer"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                            <button data-id="${item.id}" class="modifier"><i class="fa-solid fa-pen"></i></button>
+                            <button data-id="${item.id}" class="supprimer" ><i class="fa-sharp fa-solid fa-trash"></i></button>
                         </div>
                     </div>
-
-
                     <h2>${item.nom}</h2>
-                    <h3><i class="fa-solid fa-user"></i> 3 Membres</h3>
-                    <h4 style="color: rgb(72, 70, 70);">540 € dépensés</h4>
-                    <span>Ouvert</span>
+                    <h3>${item.description}</h3>
+                    <h4 style="color: rgb(72, 70, 70);">${total[index]} dépensés</h4>
+                    <span id="cloture" class="ouvert">ouvert</span>
                     <h6>Depuis le ${item.date}</h6>
+                </div>`
 
-                </div>`});
-    }else{
+        });
+    } else {
         groupes.textContent = "aucun groupe";
     }
-
+    supprimerCarte();
 
 
 }
-document.addEventListener("DOMContentLoaded", afficherGroupe);
+
+
+
+function modifierGroup() {
+    let updateCarte = groupes.querySelectorAll('.modifier');
+    const dialog = document.querySelector('#modifierGroup');
+    const modif = document.getElementById('modify');
+    const cloture = document.getElementById('clotures');
+    const cloturer = document.getElementById('cloture')
+    let newTable;
+    updateCarte.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            
+            let idCarte = this.dataset.id;
+
+            dialog.showModal();
+
+            newTable = groupesLocal.find((carte) => carte.id == idCarte);
+
+
+            console.log(groupesLocal.nom);
+            modifyNomGroupe.value = newTable.nom;
+            modifyDescription.value = newTable.description;
+            modifyDevise.value = newTable.devise;
+            dateModifie.value = newTable.date;
+        })
+    });
+       cloture.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (confirm("Voulez-vous clôturer ce groupe ?")) {
+        newTable.cloture = true;
+
+        localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
+
+        
+        cloturer.classList.remove('ouvert');
+        cloturer.classList.add('close');
+        cloturer.textContent = "Clôturé";
+        afficherGroupe();
+        dialog.close();
+        
+    }
+});
+
+
+    modif.addEventListener("click", function (e) {
+        e.preventDefault();
+
+
+        newTable.nom = modifyNomGroupe.value;
+        newTable.description = modifyDescription.value;
+        newTable.devise = modifyDevise.value;
+        newTable.date = dateModifie.value;
+
+
+        console.log(groupesLocal);
+        localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
+        afficherGroupe();
+        window.location.href = 'groupe.html';
+    })
+
+}
+
+
+
+
+function supprimerCarte() {
+    let deleteCarte = groupes.querySelectorAll('.supprimer');
+    deleteCarte.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            if (confirm("vous voulez vraiment supprimer ?")) {
+                let idCarte = this.dataset.id;
+                groupesLocal = groupesLocal.filter(function (carte) {
+                    return carte.id != idCarte;
+                });
+                localStorage.setItem('infoPartagee', JSON.stringify(groupesLocal));
+                afficherGroupe();
+            };
+        });
+    });
+}
+
+
+
+
+afficherGroupe();
+modifierGroup()

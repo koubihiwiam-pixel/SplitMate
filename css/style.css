@@ -71,8 +71,13 @@ aside{
 main{
     margin-top: 40px;
     padding-left: 300px;
-    width: 100%;
+    width: 90%;
     padding-top: 20px;
+
+    td{
+        padding: 12px;
+    }
+    
     
     
     
@@ -124,10 +129,18 @@ main{
 
         }
         span{
-            background-color: #09B367;
+            
             padding: 2px 5px;
             border-radius: 20px;
+            
+        }
+        .ouvert{
+            background-color: #09B367;
             color:#044427;
+        }
+        .close{
+            background-color: #FFCCCC;
+            color:#990000;
         }
         .icones{
             display: flex;
@@ -149,14 +162,15 @@ main{
     }
 }
 
-#formulaire{
+#formulaire , #formule{
     border: 1px solid gray;
     padding-left: 5%;
     padding-top: 2%;
-    padding-bottom: 4%;
-    
+    padding-bottom: 3%;
+    width: 70%;
     margin-top: 3%;
     border-radius: 40px;
+    
 
     #nomGroupe , #description{
         width: 50%;
@@ -171,19 +185,87 @@ main{
         gap:17%;
         flex-wrap: wrap;
     }
-    #annuler{
+    a{
         width: 20%;
         height: 30px;
-        border: transparent;
         border-radius: 5px;
+        text-decoration: none;
+        background-color: rgb(231, 226, 226);
+        color: #000000;
+        text-align: center;
+        line-height: 1.8;
+        
     }
-    #enregistrer{
+    #enregistrer , #ajouter{
         width: 20%;
         background-color: blue;
         color: #FFFFFF;
         border: transparent;
         border-radius: 5px;
     }
+}
+nav{
+    display: none;
+}
+#modifierGroup , #modifier-depense{
+    a{
+        text-decoration: none;
+        background-color: #BBD1FB;
+        padding: 10px;
+        color: #000000;
+    }
+    #idModifier , #modify{
+         color: #FFFFFF;
+         background-color: blue;
+         border: 0;
+         padding-left: 30px;
+         padding-right: 30px;
+    }
+
+}
+@media screen and (max-width: 768px){
+    body{
+        width: 100%;
+    }
+    aside{
+        display:none;
+    }
+    main{
+        padding-left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    nav{
+        display: inline;
+        display: flex;
+        justify-content: space-around;
+        background-color: #BBD1FB;
+        padding: 15px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        margin-bottom: -4px;
+        box-sizing: border-box;
+        position: fixed;
+        
+    }
+    #groupes{
+        padding-bottom: 55px;
+        gap: 10px;
+        margin-right: -30px;
+        .carte{
+            width: 100%;
+        }
+    }
+    #formulaire , #formule{
+        width: 90%;
+        padding: 5%;
+        .input{
+            width: 600px;
+        }
+    }
+
+
     
     
 
