@@ -97,7 +97,7 @@ function creeUnMembre() {
            
 
       })
-     // console.log("Groupe trouvé :", groupTrouve);  
+      //console.log("Groupe trouvé :", groupTrouve.nom);  
       let nomGroupe;
       if (groupTrouve) {
         nomGroupe = groupTrouve.nom;
